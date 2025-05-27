@@ -1,0 +1,12 @@
+# source 并启动ros 
+source /opt/ros/melodic/setup.bash
+roscore
+
+# 将rslidar(xyzirt)转换为velodyne格式
+rosrun rs_to_velodyne rs_to_velodyne XYZIRT XYZIRT
+
+# 启动标定程序
+roslaunch gril_calib velodyne.launch
+
+# 播放数据
+rosbag play bags/gril_0521.bag
